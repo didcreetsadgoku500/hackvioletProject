@@ -2,18 +2,19 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
+var bodyParser = require('body-parser')
+
 
 const UserModel = require("./models/Users")
 
 const password = process.env.PASSWORD;
 
 app.listen(3005, ()=>{console.log("running")})
-//TODO environment password
 
 mongoose.connect(`mongodb+srv://jared_w:${password}@emergency-contacts.67ictpk.mongodb.net/emergency-contacts?retryWrites=true&w=majority`);
 
-
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get("/getUser/:userId", async (req, res) => {
     const userId = req.params.userId;
@@ -22,7 +23,6 @@ app.get("/getUser/:userId", async (req, res) => {
     try {
 
         const user = await UserModel.findById(userId);
-        console.log(userId);
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
@@ -36,6 +36,7 @@ app.get("/getUser/:userId", async (req, res) => {
 
 
 app.post("/createUser", async (req,res) => {
+    console.log(req.body);
     const {name, phone} = req.body;
 
     try {
