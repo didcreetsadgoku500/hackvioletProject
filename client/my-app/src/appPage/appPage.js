@@ -107,7 +107,7 @@ const AppPage = () => {
                 <p>You will be able to instantly chat with someone while awaiting emergency services.</p>
                 {/* <Button size='lg' color='danger'>SOS</Button> */}
                 <br />
-                <Button className="circleButton" color={distressActive ? "success" : "danger" style={buttonStyle}} onClick={toggleDistress}>SOS</Button>
+                <Button className="circleButton" color={distressActive ? "success" : "danger"} style={buttonStyle} onClick={toggleDistress}>SOS</Button>
             </body>
         </div>
     );
