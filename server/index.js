@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
 var bodyParser = require('body-parser')
+var cookieParser = require("cookie-parser")
 
 
 const UserModel = require("./models/Users")
@@ -15,6 +16,7 @@ mongoose.connect(`mongodb+srv://jared_w:${password}@emergency-contacts.67ictpk.m
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
 
 app.get("/getUser/:userId", async (req, res) => {
     const userId = req.params.userId;
@@ -38,15 +40,14 @@ app.get("/getUser/:userId", async (req, res) => {
 app.post("/createUser", async (req,res) => {
     console.log(req.body);
     const {name, phone} = req.body;
-
     try {
         const user = new UserModel({emergency_contact_name: name, emergency_contact_phone_number: phone});
         await user.save();
-        res.json(user);
-        res.cookie('userId', user._id, { maxAge: 900000, httpOnly: true });
+        // res.json(user);
+        res.cookie('userId', user._id, { maxAge: 900000, httpOnly: true, path: '/' });
+        res.status(200).json(user);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-
 });
