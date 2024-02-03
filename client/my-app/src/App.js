@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Button from '@mui/joy/Button';
+import Location from './Location';
+
 
 function App() {
   return (
@@ -11,7 +12,10 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button size='lg'>Hello World</Button>
+        
+        <Location />
+
+
         <a
           className="App-link"
           href="https://reactjs.org"
