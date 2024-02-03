@@ -8,46 +8,49 @@ import MenuItem from '@mui/joy/MenuItem';
 
 
 
-const buttonStyle = function() {
-    if (buttonHovering) {
-        return {
-            borderStyle: 'solid', 
-            borderColor: '2px white', 
-            padding: '8rem', 
-            borderRadius: '100%', 
-            justifyContent: 'center', 
-            fontSize: '3.5rem', 
-            fontWeight: 'lighter', 
-            backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)'
-        }
-    }
-    else {
-        return {
-            borderStyle: 'solid', 
-            borderColor: '2px white', 
-            padding: '8rem', 
-            borderRadius: '100%', 
-            justifyContent: 'center', 
-            fontSize: '3.5rem', 
-            fontWeight: 'lighter', 
-            backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)'
-        }
-    }
-}
 // const buttonStyle = {
-//     borderStyle: 'solid', 
-//     borderColor: '2px white', 
-//     padding: '8rem', 
-//     borderRadius: '100%', 
-//     justifyContent: 'center', 
-//     fontSize: '3.5rem', 
-//     fontWeight: 'lighter', 
-//     backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)'
-// };
+    //     borderStyle: 'solid', 
+    //     borderColor: '2px white', 
+    //     padding: '8rem', 
+    //     borderRadius: '100%', 
+    //     justifyContent: 'center', 
+    //     fontSize: '3.5rem', 
+    //     fontWeight: 'lighter', 
+    //     backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)'
+    // };
+    
+    const AppPage = () => {
+        
+        let [distressActive, setDistress] = useState(false)
+        
+        const buttonStyle = function() {
+            if (distressActive) {
+                return {
+                    borderStyle: 'dotted', 
+                    borderColor: '2px lime', 
+                    padding: '8rem', 
+                    borderRadius: '100%', 
+                    justifyContent: 'center', 
+                    fontSize: '3.5rem', 
+                    fontWeight: 'lighter', 
+                    backgroundImage: 'linear-gradient(130deg, #ee0000, #bb0000, #990000, #bb0000, #ee0000, #cc0000, #dd0000)'
+                }
+            }
+            else {
+                return {
+                    borderStyle: 'solid', 
+                    borderColor: '2px white', 
+                    padding: '8rem', 
+                    borderRadius: '100%', 
+                    justifyContent: 'center', 
+                    fontSize: '3.5rem', 
+                    fontWeight: 'lighter', 
+                    backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)'
+                }
+            }
+        }
 
-const AppPage = () => {
-
-    const handleEditContactInfo = () => {
+        const handleEditContactInfo = () => {
         // Add logic to handle editing contact information
         console.log("Editing contact information");
       };
@@ -56,10 +59,10 @@ const AppPage = () => {
         // Add logic to handle deleting data
         console.log("Deleting data");
       };
-    let [distressActive, setDistress] = useState(false)
 
     const toggleDistress = () => {
       distressActive ? setDistress(false) : setDistress(true)
+      console.log("Distress: " + distressActive)
     }
 
 
@@ -107,7 +110,7 @@ const AppPage = () => {
                 <p>You will be able to instantly chat with someone while awaiting emergency services.</p>
                 {/* <Button size='lg' color='danger'>SOS</Button> */}
                 <br />
-                <Button className="circleButton" color={distressActive ? "success" : "danger"} style={buttonStyle} onClick={toggleDistress}>SOS</Button>
+                <Button className="circleButton" color={distressActive ? "success" : "danger"} style={buttonStyle()} onClick={toggleDistress}>SOS</Button>
             </body>
         </div>
     );
