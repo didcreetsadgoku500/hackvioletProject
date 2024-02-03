@@ -35,7 +35,16 @@ app.get("/getUser/:userId", async (req, res) => {
 });
 
 
-// app.post("/createUser", async (req,res) => {
+app.post("/createUser", async (req,res) => {
+    const {name, phone} = req.body;
 
+    try {
+        const user = new UserModel({emergency_contact_name: name, emergency_contact_phone_number: phone});
+        await user.save();
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 
-// });
+});
