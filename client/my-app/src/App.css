@@ -43,7 +43,7 @@ body {
   justify-self: flex-end;
 }
 
-.circle-button {
+.circleButton {
   background-color: #FFC107;
   border-radius: 100%;
 
@@ -53,6 +53,7 @@ body {
   justify-content: center;
   margin: 10px;
   cursor: pointer;
+  padding: 10em;
 }
 
 .App-link {
