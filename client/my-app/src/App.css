@@ -1,6 +1,12 @@
 .App {
   text-align: center;
+  background-color: #112233;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -13,15 +19,40 @@
   }
 }
 
+body {
+  height: 100vh;
+  color: white;
+}
+
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #6985a2;
+  
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  /* align-items: center; */
+  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.MuiMenuButton-root {
+  /* fix this */
+  width: 6rem;
+  justify-self: flex-end;
+}
+
+.circle-button {
+  background-color: #FFC107;
+  border-radius: 100%;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .App-link {
