@@ -6,11 +6,11 @@ import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
 
-export default () => {
-  
-    return (
-        <>
-      <div className="App">
+const AppPage = () => {
+    
+        return (
+                <>
+            <div className="App">
         <header className="App-header">
           <Dropdown style={{ float: 'left'}}>
             <MenuButton style={{ backgroundColor: 'white', margin: '1rem'}}>Settings:</MenuButton>
@@ -35,4 +35,4 @@ export default () => {
     );
   }
   
-//   export default appPag?/e;
+   export default AppPage;
