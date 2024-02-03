@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 import Button from '@mui/joy/Button';
 import Dropdown from '@mui/joy/Dropdown';
@@ -56,7 +56,39 @@ const AppPage = () => {
         // Add logic to handle deleting data
         console.log("Deleting data");
       };
-    
+    let [distressActive, setDistress] = useState(false)
+
+    const toggleDistress = () => {
+      distressActive ? setDistress(false) : setDistress(true)
+    }
+
+
+    navigator.geolocation.watchPosition((pos) => {
+      if (distressActive) {
+        const apiURL = process.env.REACT_APP_BASE_URL + "/postGeolocation"
+        console.log(apiURL)
+        try {
+          fetch(apiURL, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify(pos), 
+            
+          })
+        } catch (error) {
+          console.log(error)
+        }
+        
+
+      }
+    }, (err) => {
+        console.log(err)
+    })
+
+
     return (
         <div className="App">
             <header className="App-header">
@@ -75,7 +107,7 @@ const AppPage = () => {
                 <p>You will be able to instantly chat with someone while awaiting emergency services.</p>
                 {/* <Button size='lg' color='danger'>SOS</Button> */}
                 <br />
-                <Button className="circleButton" color="danger" style={buttonStyle}>SOS</Button>
+                <Button className="circleButton" color={distressActive ? "success" : "danger" style={buttonStyle}} onClick={toggleDistress}>SOS</Button>
             </body>
         </div>
     );
