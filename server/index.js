@@ -6,6 +6,9 @@ var bodyParser = require('body-parser')
 var cookieParser = require("cookie-parser")
 
 
+
+var userLocationMap = new Map();
+
 const UserModel = require("./models/Users")
 
 const password = process.env.PASSWORD;
@@ -44,10 +47,45 @@ app.post("/createUser", async (req,res) => {
         const user = new UserModel({emergency_contact_name: name, emergency_contact_phone_number: phone});
         await user.save();
         // res.json(user);
-        res.cookie('userId', user._id, { maxAge: 900000, httpOnly: true, path: '/' });
+        res.cookie('userId', user._id, { maxAge: 90000000000, httpOnly: true, path: '/' });
         res.status(200).json(user);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+
+
+// post geolocation
+app.post("/postGeolocation", async (req,res) => {
+    // console.log(req.cookies.userId);
+    console.log(req.body);
+
+
+
+    try {
+
+        userLocationMap.set(req.cookies.userId, req.body)
+
+        // console.log(userLocationMap);
+        console.log(userLocationMap.get(req.cookies.userId));
+        res.status(200).json();
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+app.get("/getLocation/:distressed_id", async (req, res) => {
+    try {
+        const userId = req.params.distressed_id;
+        res.status(200).json(userLocationMap.get((userId)));
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
