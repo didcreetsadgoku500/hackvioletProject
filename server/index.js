@@ -55,6 +55,7 @@ const send_alert_to = (send_to_address, client_name, contact_name, client_id) =>
       });
 
 
+    // setTimeout(10)
 
 
 
@@ -127,7 +128,7 @@ app.get("/alertContact", async (req,res) => {
 
 
     const client_name = user.client_name;
-    const client_id = user.client_id;
+    const client_id = req.cookies.userId;
     const contact_name = user.emergency_contact_name;
     const contact_number = user.emergency_contact_phone_number;
 
