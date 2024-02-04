@@ -46,13 +46,13 @@ const send_alert_to = (send_to_address, client_name, contact_name, client_id) =>
         text: `${contact_name}, this message is alerting you that ${client_name} is feeling in an unsafe place, and has requested your help.`,
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //     if (error) {
+    //       console.error(error);
+    //     } else {
+    //       console.log('Email sent: ' + info.response);
+    //     }
+    //   });
 
 
     // setTimeout(10)
@@ -71,7 +71,7 @@ const send_alert_to = (send_to_address, client_name, contact_name, client_id) =>
         from: SENDER_EMAIL,
         to: send_to_address,
         subject: `${client_name} SOS ALERT`,
-        text: `Please follow this link to view their live location: ${BASE_URL}/${client_id}`,
+        text: `${BASE_URL}/${client_id}   ${contact_name}, this message is alerting you that ${client_name} is feeling in an unsafe place, and has requested your help. Please follow this link to view their live location.`,
     };
 
     transporter_link.sendMail(mailOptions_link, (error, info) => {
@@ -85,7 +85,7 @@ const send_alert_to = (send_to_address, client_name, contact_name, client_id) =>
       
 }
 
-app.get("/getUser/:userId", async (req, res) => {
+app.get("/api/getUser/:userId", async (req, res) => {
     const userId = req.params.userId;
     console.log("start");
 
@@ -102,14 +102,14 @@ app.get("/getUser/:userId", async (req, res) => {
     }
 });
 
-app.post("/createUser", async (req,res) => {
+app.post("/api/createUser", async (req,res) => {
     console.log(req.body);
     const {client_name,contact_name, phone} = req.body;
     try {
         const user = new UserModel({client_name: client_name,emergency_contact_name: contact_name, emergency_contact_phone_number: phone});
         await user.save();
         // res.json(user);
-        res.cookie('userId', user._id, { maxAge: 90000000000, httpOnly: true, path: '/' });
+        res.cookie('userId', user._id, { maxAge: 90000000000, httpOnly: false, path: '/' });
         res.status(200).json(user);
     } catch (error) {
         console.error(error);
@@ -117,7 +117,7 @@ app.post("/createUser", async (req,res) => {
     }
 });
 
-app.get("/alertContact", async (req,res) => {
+app.get("/api/alertContact", async (req,res) => {
     console.log(req.cookies.userId);
 
     const user = await UserModel.findById(req.cookies.userId);
@@ -143,7 +143,7 @@ app.get("/alertContact", async (req,res) => {
 
 
 // post geolocation
-app.post("/postGeolocation", async (req,res) => {
+app.post("/api/postGeolocation", async (req,res) => {
     // console.log(req.cookies.userId);
     console.log(req.body);
     try {
@@ -157,7 +157,7 @@ app.post("/postGeolocation", async (req,res) => {
     }
 });
 
-app.get("/getLocation/:distressed_id", async (req, res) => {
+app.get("/api/getLocation/:distressed_id", async (req, res) => {
     try {
         const userId = req.params.distressed_id;
         res.status(200).json(userLocationMap.get((userId)));

@@ -58,13 +58,13 @@ const SignInPage = () => {
                 
             </Box>
 
-            <Tooltip title="Text here" color="neutral" placement="top" variant="solid" size="md" enterTouchDelay={0}>
-                <Button id="signInPage_submit_btn" variant="soft" size="sm">
-                    How does TODO_NAME works?
+            <Tooltip title="Register an emergency contact on Distress.OS. Press the distress button in an emergency to alert your contact and stream your location." color="neutral" placement="top" variant="solid" size="md" enterTouchDelay={0}>
+                <Button id="signInPage_submit_btn" variant="soft" size="sm" color="neutral">
+                    How does Distress.OS work?
                 </Button>
             </Tooltip>
 
-            <Button onClick={handle_add_emergency_information} id="signInPage_submit_btn" variant="soft" size="sm">
+            <Button onClick={handle_add_emergency_information} id="signInPage_submit_btn" variant="soft" color="neutral" size="sm">
                 Create Emergency Contact
             </Button>
 

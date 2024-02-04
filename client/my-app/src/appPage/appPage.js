@@ -26,6 +26,7 @@ import Snackbar from '@mui/joy/Snackbar';
     const toggleDistress = () => {
       if (!distressActive) {
         setNotification(true);
+        fetch(process.env.REACT_APP_BASE_URL + "/alertContact")
         
       }
       else {

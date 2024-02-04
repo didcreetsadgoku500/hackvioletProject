@@ -1,4 +1,4 @@
-import {APIProvider, Map, Marker} from '@vis.gl/react-google-maps';
+import {APIProvider, Map, Marker, AdvancedMarker} from '@vis.gl/react-google-maps';
 import { useEffect, useState } from 'react';
 
 export default function SimpleMap(props){
@@ -24,8 +24,12 @@ export default function SimpleMap(props){
     <div style={{width: "100vh", height: "50vh"}}>
 
     <APIProvider apiKey={key}>
-      <Map center={position} zoom={18}>
-        <Marker position={position} />
+      <Map center={position} zoom={18} mapId={"a844e8901fb7fd72 "}>
+        {/* <Marker position={position} /> */}
+        <AdvancedMarker position={position}> 
+          <img src='gps.png' style={{width: "32px", height: "32px"}} />
+
+        </AdvancedMarker>
       </Map>
     </APIProvider>
     </div>
