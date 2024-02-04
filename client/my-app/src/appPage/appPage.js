@@ -82,17 +82,14 @@ import MenuItem from '@mui/joy/MenuItem';
 
     navigator.geolocation.watchPosition((pos) => {
       if (distressActive) {
-        const apiURL = process.env.REACT_APP_BASE_URL + "/postGeolocation"
-        console.log(apiURL)
         try {
-          fetch(apiURL, {
+          fetch("http://localhost:3005/postGeolocation", {
             method: "POST",
             credentials: "include",
             headers: {
               "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*"
             },
-            body: JSON.stringify(pos), 
+            body: JSON.stringify({"lat": pos.coords.latitude, "lon": pos.coords.longitude}), 
             
           })
         } catch (error) {

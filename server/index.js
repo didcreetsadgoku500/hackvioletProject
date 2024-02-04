@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv').config();
 var bodyParser = require('body-parser')
 var cookieParser = require("cookie-parser")
+const cors = require("cors")
 
 
 
@@ -20,6 +21,8 @@ mongoose.connect(`mongodb+srv://jared_w:${password}@emergency-contacts.67ictpk.m
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+app.use(cors({credentials: true, origin: true}))
 
 app.get("/getUser/:userId", async (req, res) => {
     const userId = req.params.userId;
