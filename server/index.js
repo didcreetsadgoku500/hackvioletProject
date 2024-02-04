@@ -69,10 +69,11 @@ app.post("/postGeolocation", async (req,res) => {
 
     try {
 
-        userLocationMap.set(req.cookies.userId, req.body)
+        // userLocationMap.set(req.cookies.userId, req.body)
+        userLocationMap.set("5", req.body)
 
         // console.log(userLocationMap);
-        console.log(userLocationMap.get(req.cookies.userId));
+        // console.log(userLocationMap.get(req.cookies.userId));
         res.status(200).json();
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
