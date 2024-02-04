@@ -28,9 +28,9 @@ import MenuItem from '@mui/joy/MenuItem';
             if (distressActive) {
                 return {
                     width: '40vw',
-                    maxWidth: '100vh',
+                    maxWidth: '60vh',
                     height: '40vw',
-                    maxHeight: '100vh',
+                    maxHeight: '60vh',
                     borderStyle: 'dotted', 
                     borderColor: '3px lime', 
                     padding: '8.25rem', 
@@ -76,9 +76,7 @@ import MenuItem from '@mui/joy/MenuItem';
       };
 
     const toggleDistress = () => {
-      distressActive ? setDistress(false) : setDistress(true)
-      console.log("Distress: " + distressActive)
-      if (distressActive) {
+      if (!distressActive) {
         setNotification(true);
         setTimeout(() => {
           setNotification(false);
@@ -87,6 +85,8 @@ import MenuItem from '@mui/joy/MenuItem';
       else {
         setNotification(false);
       }
+      distressActive ? setDistress(false) : setDistress(true)
+      console.log("Distress: " + distressActive);
     }
 
 

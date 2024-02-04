@@ -63,15 +63,15 @@ body {
 @keyframes App-logo-spin {
   0%,100% {
     width: 30vw;
-    max-width: 100vh;
+    max-width: 60vh;
     height: 30vw;
-    max-height: 100vh;
+    max-height: 60vh;
   }
   10% {
     width: 40vw;
-    max-width: 100vh;
+    max-width: 60vh;
     height: 40vw;
-    max-height: 100vh;
+    max-height: 60vh;
   }
   /* 50% {
     width: 30vw;
@@ -81,9 +81,9 @@ body {
   } */
   90% {
     width: 20vw;
-    max-width: 100vh;
+    max-width: 60vh;
     height: 20vw;
-    max-height: 100vh;
+    max-height: 60vh;
   }
   /* 100% {
     width: 30vw;
