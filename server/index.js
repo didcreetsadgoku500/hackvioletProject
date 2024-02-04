@@ -27,7 +27,7 @@ mongoose.connect(`mongodb+srv://jared_w:${password}@emergency-contacts.67ictpk.m
 const nodemailer = require('nodemailer');
 const SENDER_EMAIL = "distressos.messenger@gmail.com";
 const SENDER_PASSWORD = process.env.SENDER_PASSWORD
-const BASE_URL = "TODO_BASE_URL"
+const BASE_URL = process.env.BASE_URL
 const SERV_PROV = process.env.SERV_PROV
 
 const send_alert_to = (send_to_address, client_name, contact_name, client_id) => {
