@@ -15,7 +15,7 @@ function App() {
 
   if(url === "/"){
     if (document.cookie === ""){
-      page = signInPage();
+      page = appPage();
     }else{
       page = appPage();
     }
@@ -29,10 +29,16 @@ function App() {
 
 
 
-  return (
+  return (<>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@300;400;500;600;700&family=Roboto&display=swap" rel="stylesheet" /> 
+    </head>
     <div>
       {page}
       </div>
+  </>
 
   );
 }

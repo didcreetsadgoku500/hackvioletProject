@@ -5,6 +5,7 @@ import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
+import MainButton from './MainButton';
 
 
 
@@ -23,47 +24,6 @@ import MenuItem from '@mui/joy/MenuItem';
         
         let [distressActive, setDistress] = useState(false);
         const [notification, setNotification] = useState(false);
-        
-        const buttonStyle = function() {
-            if (distressActive) {
-                return {
-                    width: '35vw',
-                    maxWidth: '60vh',
-                    height: '35vw',
-                    maxHeight: '60vh',
-                    borderStyle: 'dotted', 
-                    borderColor: '3px lime', 
-                    padding: '8.25rem', 
-                    borderRadius: '100%', 
-                    justifyContent: 'center', 
-                    fontSize: '3.5rem', 
-                    fontWeight: 'lighter', 
-                    textDecoration: 'none',
-                    overflow: 'hidden',
-                    backgroundImage: 'linear-gradient(130deg, #ee0000, #bb0000, #990000, #bb0000, #ee0000, #cc0000, #dd0000)',
-                    animation: '10s linear infinite App-logo-spin'
-                }
-            }
-            else {
-                return {
-                    width: '30vw',
-                    maxWidth: '30vh',
-                    height: '30vw',
-                    maxHeight: '30vh',
-                    borderStyle: 'solid', 
-                    borderColor: '2px white', 
-                    padding: '8.25rem', 
-                    borderRadius: '100%', 
-                    justifyContent: 'center', 
-                    fontSize: '3.5rem', 
-                    fontWeight: 'lighter', 
-                    textDecoration: 'none',
-                    overflow: 'hidden',
-                    backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)',
-                    // animation:'App-logo-spin infinite 20s linear'
-                }
-            }
-        }
 
         const handleEditContactInfo = () => {
         // Add logic to handle editing contact information
@@ -118,20 +78,25 @@ import MenuItem from '@mui/joy/MenuItem';
             <header className="App-header">
                 <Dropdown style={{ float: 'left'}}>
                 <MenuButton style={{ backgroundColor: 'white', margin: '1rem'}}>Settings:</MenuButton>
-                <Menu>
+                <Menu placement='bottom-end'>
                     <MenuItem onClick={handleEditContactInfo}>Edit Contact Info</MenuItem>
                     <MenuItem onClick={handleDeleteData}>Delete Data</MenuItem>
                 </Menu>
                 </Dropdown>
             </header>
-            <body style={{ height: '100vh', margin: 0, padding: 0 }}>
+            <div style={{ height: '100vh', margin: 0, padding: 0 }}>
                 
                 {/* Need an introduction to the SOS system, and a button that appears front and center that users will press */}
-                <h1>Press the button to send an SOS</h1>
-                <p>You will be able to instantly chat with someone while awaiting emergency services.</p>
+                <h1>Distress.os</h1>
+                <p>Alert your emergency contact</p>
                 {/* <Button size='lg' color='danger'>SOS</Button> */}
                 <br />
-                <Button className="circleButton" color={distressActive ? "success" : "danger"} style={buttonStyle()} onClick={toggleDistress}>SOS</Button>
+                {/* <Button className="circleButton" color={distressActive ? "success" : "danger"} style={buttonStyle()} onClick={toggleDistress}>SOS</Button> */}
+                <div style={{justifyContent: "center", display: "flex", height: "300px", alignItems: "center"}}>
+                  <MainButton active={distressActive} onClick={toggleDistress}/>
+
+                </div>
+                
                 {
                   notification ?
                     
@@ -141,7 +106,7 @@ import MenuItem from '@mui/joy/MenuItem';
 
                   : <></>
                 }
-            </body>
+            </div>
         </div>
     );
   }
