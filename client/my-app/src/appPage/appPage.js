@@ -26,26 +26,40 @@ import MenuItem from '@mui/joy/MenuItem';
         const buttonStyle = function() {
             if (distressActive) {
                 return {
+                    width: '40vw',
+                    maxWidth: '100vh',
+                    height: '40vw',
+                    maxHeight: '100vh',
                     borderStyle: 'dotted', 
                     borderColor: '2px lime', 
-                    padding: '8rem', 
+                    padding: '8.25rem', 
                     borderRadius: '100%', 
                     justifyContent: 'center', 
                     fontSize: '3.5rem', 
                     fontWeight: 'lighter', 
-                    backgroundImage: 'linear-gradient(130deg, #ee0000, #bb0000, #990000, #bb0000, #ee0000, #cc0000, #dd0000)'
+                    textDecoration: 'none',
+                    overflow: 'hidden',
+                    backgroundImage: 'linear-gradient(130deg, #ee0000, #bb0000, #990000, #bb0000, #ee0000, #cc0000, #dd0000)',
+                    animation: '10s linear infinite App-logo-spin'
                 }
             }
             else {
                 return {
+                    width: '30vw',
+                    maxWidth: '30vh',
+                    height: '30vw',
+                    maxHeight: '30vh',
                     borderStyle: 'solid', 
                     borderColor: '2px white', 
-                    padding: '8rem', 
+                    padding: '8.25rem', 
                     borderRadius: '100%', 
                     justifyContent: 'center', 
                     fontSize: '3.5rem', 
                     fontWeight: 'lighter', 
-                    backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)'
+                    textDecoration: 'none',
+                    overflow: 'hidden',
+                    backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)',
+                    // animation:'App-logo-spin infinite 20s linear'
                 }
             }
         }
