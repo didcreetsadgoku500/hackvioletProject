@@ -35,7 +35,7 @@ function App() {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@300;400;500;600;700&family=Roboto&display=swap" rel="stylesheet" /> 
     </head>
-    <div>
+    <div className='App'>
       {page}
       </div>
   </>

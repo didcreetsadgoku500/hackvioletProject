@@ -1,13 +1,13 @@
 import SimpleMap from "./MapComponent"
-const AnyReactComponent = () => <div>hi</div>;
 
 
 export default () => {
     return (<>
-        <h1>Tracker Page</h1>
-        <SimpleMap>
+        <h1>Distress.os</h1>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <SimpleMap />
 
-        </SimpleMap>
+        </div>
 
     </>)
 }

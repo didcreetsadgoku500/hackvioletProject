@@ -23,7 +23,7 @@ export default function SimpleMap(props){
     <div style={{width: "100vh", height: "50vh"}}>
 
     <APIProvider apiKey={key}>
-      <Map center={position} zoom={10}>
+      <Map center={position} zoom={18}>
         <Marker position={position} />
       </Map>
     </APIProvider>

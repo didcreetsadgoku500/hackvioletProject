@@ -6,6 +6,7 @@ import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
 import IconButton from '@mui/joy/IconButton';
 import MainButton from './MainButton';
+import Snackbar from '@mui/joy/Snackbar';
     
     const AppPage = () => {
         
@@ -25,9 +26,7 @@ import MainButton from './MainButton';
     const toggleDistress = () => {
       if (!distressActive) {
         setNotification(true);
-        setTimeout(() => {
-          setNotification(false);
-        }, 5000);
+        
       }
       else {
         setNotification(false);
@@ -90,15 +89,15 @@ import MainButton from './MainButton';
 
                 </div>
                 
-                {
-                  notification ?
-                    
-                      <div>
-                        <h1 style={{color: 'white', textAlign: 'center'}}>Your emergency contact has been notified.</h1>
-                      </div>
-
-                  : <></>
-                }
+                <Snackbar
+                anchorOrigin={{horizontal: "center", vertical: 'bottom'}}
+                open={notification}
+                onClose={() => setNotification(false)}
+                autoHideDuration={5000}
+                variant='soft'
+                color='danger'>  
+                  Your emergency contact has been notified.
+                </Snackbar>
             </div>
         </div>
     );
