@@ -43,7 +43,7 @@ body {
   justify-self: flex-end;
 }
 
-.circle-button {
+.circleButton {
   background-color: #FFC107;
   border-radius: 100%;
 
@@ -53,6 +53,7 @@ body {
   justify-content: center;
   margin: 10px;
   cursor: pointer;
+  padding: 10em;
 }
 
 .App-link {
@@ -60,12 +61,36 @@ body {
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  0%,100% {
+    width: 30vw;
+    max-width: 100vh;
+    height: 30vw;
+    max-height: 100vh;
   }
-  to {
-    transform: rotate(360deg);
+  10% {
+    width: 40vw;
+    max-width: 100vh;
+    height: 40vw;
+    max-height: 100vh;
   }
+  /* 50% {
+    width: 30vw;
+    max-width: 100vh;
+    height: 30vw;
+    max-height: 100vh;
+  } */
+  90% {
+    width: 20vw;
+    max-width: 100vh;
+    height: 20vw;
+    max-height: 100vh;
+  }
+  /* 100% {
+    width: 30vw;
+    max-width: 100vh;
+    height: 30vw;
+    max-height: 100vh;
+  } */
 }
 
 .signInContainer{
