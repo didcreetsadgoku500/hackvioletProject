@@ -15,7 +15,7 @@ function App() {
 
   if(url === "/"){
     if (document.cookie === ""){
-      page = appPage();
+      page = signInPage();
     }else{
       page = appPage();
     }

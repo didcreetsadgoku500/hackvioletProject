@@ -21,16 +21,15 @@ const SignInPage = () => {
     const [editContactName, setContactName] = useState();
     const [editContactNumber, setContactNumber] = useState();
 
-    function handle_add_emergency_information(){
-        console.log(editClientName);
-        console.log(editContactName);
-        console.log(editContactNumber);
-
-        Axios.post(process.env.REACT_APP_BASE_URL + "/createUser",{
+    async function handle_add_emergency_information(){
+        
+        await Axios.post(process.env.REACT_APP_BASE_URL + "/createUser",{
             client_name: editClientName,
             contact_name: editContactName,
             phone: editContactNumber
             })
+
+        window.location.reload()
     }
 
 
