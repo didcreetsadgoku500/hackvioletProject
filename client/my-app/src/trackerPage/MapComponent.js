@@ -8,15 +8,16 @@ export default function SimpleMap(props){
   const [position, setPosition] = useState(null)
   
   useEffect(() => {
+    const pollData = async () => {
 
-    setInterval(async () => {
-      let res = await fetch(`https://servertest.discovery.cs.vt.edu/getLocation${trackingID}`)
+      let res = await fetch(process.env.REACT_APP_BASE_URL + `/getLocation${trackingID}`)
       res = await res.json()
       console.log(res)
       setPosition(res)
-      
-    }, 5000)
-  }, [])
+    }
+    pollData()
+    setInterval(pollData, 5000)
+  }, [trackingID])
   // const position = {lat: 53.54992, lng: 10.00678};
 
   return (

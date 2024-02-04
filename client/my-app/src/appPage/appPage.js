@@ -39,7 +39,7 @@ import Snackbar from '@mui/joy/Snackbar';
     navigator.geolocation.watchPosition((pos) => {
       if (distressActive) {
         try {
-          fetch("https://servertest.discovery.cs.vt.edu/postGeolocation", {
+          fetch(process.env.REACT_APP_BASE_URL + "/postGeolocation", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -78,12 +78,9 @@ import Snackbar from '@mui/joy/Snackbar';
             </header>
             <div style={{ height: '100vh', margin: 0, padding: 0 }}>
                 
-                {/* Need an introduction to the SOS system, and a button that appears front and center that users will press */}
-                <h1>Distress.os</h1>
+                <h1>Distress.OS</h1>
                 <p>Alert your emergency contact</p>
-                {/* <Button size='lg' color='danger'>SOS</Button> */}
                 <br />
-                {/* <Button className="circleButton" color={distressActive ? "success" : "danger"} style={buttonStyle()} onClick={toggleDistress}>SOS</Button> */}
                 <div style={{justifyContent: "center", display: "flex", height: "300px", alignItems: "center"}}>
                   <MainButton active={distressActive} onClick={toggleDistress}/>
 
