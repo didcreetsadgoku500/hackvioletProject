@@ -21,7 +21,8 @@ import MenuItem from '@mui/joy/MenuItem';
     
     const AppPage = () => {
         
-        let [distressActive, setDistress] = useState(false)
+        let [distressActive, setDistress] = useState(false);
+        const [notification, setNotification] = useState(false);
         
         const buttonStyle = function() {
             if (distressActive) {
@@ -31,7 +32,7 @@ import MenuItem from '@mui/joy/MenuItem';
                     height: '40vw',
                     maxHeight: '100vh',
                     borderStyle: 'dotted', 
-                    borderColor: '2px lime', 
+                    borderColor: '3px lime', 
                     padding: '8.25rem', 
                     borderRadius: '100%', 
                     justifyContent: 'center', 
@@ -77,6 +78,15 @@ import MenuItem from '@mui/joy/MenuItem';
     const toggleDistress = () => {
       distressActive ? setDistress(false) : setDistress(true)
       console.log("Distress: " + distressActive)
+      if (distressActive) {
+        setNotification(true);
+        setTimeout(() => {
+          setNotification(false);
+        }, 5000);
+      }
+      else {
+        setNotification(false);
+      }
     }
 
 
@@ -122,6 +132,15 @@ import MenuItem from '@mui/joy/MenuItem';
                 {/* <Button size='lg' color='danger'>SOS</Button> */}
                 <br />
                 <Button className="circleButton" color={distressActive ? "success" : "danger"} style={buttonStyle()} onClick={toggleDistress}>SOS</Button>
+                {
+                  notification ?
+                    
+                      <div>
+                        <h1 style={{color: 'white', textAlign: 'center'}}>Your emergency contact has been notified.</h1>
+                      </div>
+
+                  : <></>
+                }
             </body>
         </div>
     );
