@@ -42,9 +42,9 @@ app.get("/getUser/:userId", async (req, res) => {
 
 app.post("/createUser", async (req,res) => {
     console.log(req.body);
-    const {name, phone} = req.body;
+    const {client_name,contact_name, phone} = req.body;
     try {
-        const user = new UserModel({emergency_contact_name: name, emergency_contact_phone_number: phone});
+        const user = new UserModel({client_name: client_name,emergency_contact_name: contact_name, emergency_contact_phone_number: phone});
         await user.save();
         // res.json(user);
         res.cookie('userId', user._id, { maxAge: 90000000000, httpOnly: true, path: '/' });

@@ -12,6 +12,10 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	client_name: {
+		type: String,
+		required: true,
+	}
 });
 
 
