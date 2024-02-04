@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import Button from '@mui/joy/Button';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
+import IconButton from '@mui/joy/IconButton';
 import MainButton from './MainButton';
-
-
-
-// const buttonStyle = {
-    //     borderStyle: 'solid', 
-    //     borderColor: '2px white', 
-    //     padding: '8rem', 
-    //     borderRadius: '100%', 
-    //     justifyContent: 'center', 
-    //     fontSize: '3.5rem', 
-    //     fontWeight: 'lighter', 
-    //     backgroundImage: 'linear-gradient(130deg, #ff0000, #cc0000, #aa0000, #cc0000, #ff0000, #dd0000, #ee0000)'
-    // };
     
     const AppPage = () => {
         
@@ -77,7 +64,13 @@ import MainButton from './MainButton';
         <div className="App">
             <header className="App-header">
                 <Dropdown style={{ float: 'left'}}>
-                <MenuButton style={{ backgroundColor: 'white', margin: '1rem'}}>Settings:</MenuButton>
+                <MenuButton 
+                slots={{root: IconButton}}
+                slotProps={{root: {variant: "plain"}, style: {width: "10px"}}}
+                style={{width: "56px"}}
+                >
+                  <img src="gear.png" style={{width: "32px", height: "32px", margin: "12px"}}></img>
+                </MenuButton>
                 <Menu placement='bottom-end'>
                     <MenuItem onClick={handleEditContactInfo}>Edit Contact Info</MenuItem>
                     <MenuItem onClick={handleDeleteData}>Delete Data</MenuItem>

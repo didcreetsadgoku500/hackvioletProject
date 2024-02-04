@@ -6,6 +6,8 @@
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  --variant-plainActiveBg: rgba(25,25,40,0.4  );
+  --variant-plainHoverBg: rgba(0,0,0,0)
 }
 
 
