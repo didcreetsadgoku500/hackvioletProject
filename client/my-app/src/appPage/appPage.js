@@ -93,13 +93,13 @@ import MenuItem from '@mui/joy/MenuItem';
     navigator.geolocation.watchPosition((pos) => {
       if (distressActive) {
         try {
-          fetch("http://localhost:3005/postGeolocation", {
+          fetch("https://servertest.discovery.cs.vt.edu/postGeolocation", {
             method: "POST",
             credentials: "include",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({"lat": pos.coords.latitude, "lon": pos.coords.longitude}), 
+            body: JSON.stringify({"lat": pos.coords.latitude, "lng": pos.coords.longitude}), 
             
           })
         } catch (error) {
