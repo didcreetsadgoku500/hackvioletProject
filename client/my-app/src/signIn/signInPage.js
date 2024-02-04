@@ -59,7 +59,7 @@ const SignInPage = () => {
                 
             </Box>
 
-            <Tooltip title="Text here" color="neutral" placement="top" variant="solid" size="md">
+            <Tooltip title="Text here" color="neutral" placement="top" variant="solid" size="md" enterTouchDelay={0}>
                 <Button id="signInPage_submit_btn" variant="soft" size="sm">
                     How does TODO_NAME works?
                 </Button>
