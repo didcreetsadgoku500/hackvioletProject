@@ -29,7 +29,7 @@ const SignInPage = () => {
         Axios.post("http://localhost:3005/createUser",{
             client_name: editClientName,
             contact_name: editContactName,
-            contact_number: editContactNumber
+            phone: editContactNumber
             })
     }
 
