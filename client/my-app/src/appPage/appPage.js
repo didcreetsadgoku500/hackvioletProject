@@ -27,9 +27,9 @@ import MenuItem from '@mui/joy/MenuItem';
         const buttonStyle = function() {
             if (distressActive) {
                 return {
-                    width: '40vw',
+                    width: '35vw',
                     maxWidth: '60vh',
-                    height: '40vw',
+                    height: '35vw',
                     maxHeight: '60vh',
                     borderStyle: 'dotted', 
                     borderColor: '3px lime', 
